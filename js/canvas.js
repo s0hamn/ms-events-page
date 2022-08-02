@@ -34,8 +34,8 @@ class Particle{
     constructor(){
         this.x = Math.random()*canvas.width
         this.y = Math.random()*canvas.height
-        this.speedX = Math.random() * 1-0.5;
-        this.speedY = Math.random() * 1 - 0.5
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
         this.size = Math.random() * 5 + 1;
     }
 
@@ -57,8 +57,6 @@ const init = ()=>{
         particlesArray.push(new Particle())
         
     }
-    
-    console.log(particlesArray)
 }
 init()
 const handleParticles = ()=>{
@@ -74,7 +72,7 @@ const handleParticles = ()=>{
 
             const distance = Math.sqrt(dx * dx + dy * dy)
 
-            if(distance < 100){
+            if(distance < 75){
                 ctx.beginPath()
                 ctx.strokeStyle = 'hsl(' + hue + ', 100%, 50%)'
                 ctx.moveTo(particlesArray[i].x, particlesArray[i].y)
@@ -97,7 +95,7 @@ const animate = ()=>{
 
     ctx.clearRect(0, 0 , canvas.width, canvas.height)
     handleParticles()
-    hue+= 0.2;
+    hue+= 0.1;
     requestAnimationFrame(animate)
 }
 

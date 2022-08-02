@@ -28,6 +28,7 @@
 .heading{
     color: white;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 700px;
@@ -37,6 +38,11 @@
 .heading h1{
     font-size: 80px;
     font-style: italic;
+}
+
+#scrolldown{
+    width: 100px;
+    cursor: pointer;
 }
 
 /* --------- events -------- */
@@ -109,7 +115,7 @@ position: relative;
 .eventCard:hover{
     background-color: var(--clr);
     box-shadow: 0 0 35px var(--clr);
-    height: 300px;
+    height: 350px;
 }
 
 .eventCard::before{
@@ -165,14 +171,14 @@ position: relative;
 }
 
 .eventCard:hover .eventDesc{
-    height: 150px;
+    height: 200px;
 }
 
 .allEventsCol{
-    align-self: flex-start;
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: 350px 350px;
+    grid-template-columns: repeat(2,1fr);
+    
+    grid-template-rows: repeat(3, 390px);
 }
 
 .msLogo{
@@ -185,7 +191,7 @@ position: relative;
 /* -------- contact us-------- */
 
 #contact{
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(255,255, 255, 0.1);
 }
 .contact-logos{
     position: relative;
@@ -211,3 +217,22 @@ transition:  background 0.5s , transform 0.5s;
     margin: 10px 0;
 }
 
+/* ------- responsiveness ------- */
+
+@media screen and (max-width: 480px) {
+    #allEvents{
+        align-items: center;
+        justify-content: center;
+    }
+    .allEventsCol{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        
+        grid-template-rows: repeat(3, 370px);
+    }
+
+    .heading h1
+    {
+        font-size: 36px;
+    }
+  }
