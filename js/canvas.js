@@ -5,7 +5,12 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const particlesArray = [];
-let hue = 0;
+let hue = 60;
+var nparticles = 150;
+
+if(window.innerWidth < 600){
+    nparticles = 50
+}
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -40,7 +45,7 @@ class Particle{
     this.y += this.speedY
     }
     draw(){
-        ctx.fillStyle = 'hsl(' + hue + ', 100%, 50%)'
+        ctx.fillStyle = 'hsl(' + hue + ', 50%, 50%)'
         ctx.beginPath()
         ctx.arc(this.x,this.y,this.size,0,Math.PI * 2)
         ctx.fill()
@@ -48,7 +53,7 @@ class Particle{
 }
 
 const init = ()=>{
-    for(let i = 0;i < 150; i++){
+    for(let i = 0;i < nparticles; i++){
         particlesArray.push(new Particle())
         
     }
@@ -92,7 +97,7 @@ const animate = ()=>{
 
     ctx.clearRect(0, 0 , canvas.width, canvas.height)
     handleParticles()
-    hue++;
+    hue+= 0.2;
     requestAnimationFrame(animate)
 }
 
